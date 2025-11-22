@@ -41,6 +41,8 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  width: 100%;
+  position: fixed;
 
   .left-side-content{
     display: flex;
@@ -72,6 +74,7 @@ const HeaderContainer = styled.header`
     border-radius: 10px;
     border: none;
     padding: 5px 20px;
+    outline: none;
   }
 
   .right-side-sub-content {
