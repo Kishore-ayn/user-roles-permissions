@@ -6,7 +6,7 @@ const SectionTopSection = () => {
       <div className="rights-container">
         <div className="user-role">
           <p>UserName</p>
-          <pc className="role">Role</pc>
+          <p className="role">Role</p>
         </div>
         <div className="user-role-update">
           <input type="text" />
@@ -46,7 +46,6 @@ const TopSection = styled.div`
     display: flex;
     flex-direction: row;
     gap: 20px;
-    margin-bottom: 10px;
   }
 
   .user-role-update button{

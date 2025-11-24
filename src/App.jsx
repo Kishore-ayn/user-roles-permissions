@@ -1,5 +1,6 @@
-import Header from './Components/Header.jsx'
-import RolesPermissions from './Components/RolesPermissions.jsx';
+
+import Header from './Components/Main Components/Header.jsx'
+import RolesPermissions from './Components/Main Components/RolesPermissions.jsx';
 import styled from 'styled-components';
 
 const App = () => {

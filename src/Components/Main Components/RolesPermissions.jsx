@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import SectionTopSection from "./SectionTopSection";
+import SectionTable from "./SectionTable";
 
 const RolesPermissions = () => {
   return(
     <SectionContainer>
       <SectionTopSection />
+      <SectionTable />
     </SectionContainer>
   );  
 }

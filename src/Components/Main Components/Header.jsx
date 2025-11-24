@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import logo from "../assets/LOGO1.png";
-import userprofle from "../assets/user-profile.png";
+import logo from "../../assets/LOGO1.png";
+import userprofle from "../../assets/user-profile.png";
 
 
 const Header = () => {
