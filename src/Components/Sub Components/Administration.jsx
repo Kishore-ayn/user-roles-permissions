@@ -2,6 +2,34 @@ import styled from "styled-components";
 import { FcPlus } from "react-icons/fc";
 import { useState } from "react";
 
+const adminMenu = [
+  {type : "section", name: "Master Management" },
+  {type : "section", name: "Ward Management" },
+  {type : "section", name: "Doctor Management" },
+  {type : "section", name: "Lab Management" },
+  {type : "section", name: "Pharmacy Management" },
+  {type : "section", name: "Utility Management" },
+
+  {
+    type : "permissions",
+    name : "User Management",
+    fields : [
+      "Is Active", "View", "Add", "Edit", "Upload",
+      "Delete", "U & R", "Approve", "Payment Mode", "Hospital TypeField"
+    ]
+  },
+
+    {
+    type : "permissions",
+    name : "ICD Master",
+    fields : [
+      "Is Active", "View", "Add", "Edit", "Upload",
+      "Delete", "U & R", "Approve", "Payment Mode", "Hospital TypeField"
+    ]
+  }
+];
+
+
 const Administration = () => {
   const [openSection, setOpenSection] = useState(null);
 
@@ -25,352 +53,37 @@ const Administration = () => {
       </AdministrationRow>
       {openSection === "admin" && (
       <>
-        <AdministrationDropDown onClick={() => toggleSection("master")}>
-          <td>
-            <label>
-              <FcPlus />
-              Master Management
-            </label>
-          </td>                           
-        </AdministrationDropDown>
-        <AdministrationDropDown>
-          <td>
-            <label>
-              <FcPlus />
-              Ward Management
-            </label>
-          </td>                           
-        </AdministrationDropDown>
-        <AdministrationDropDown>
-          <td>
-            <label>
-              <FcPlus />
-              Doctor Management
-            </label>
-          </td>                           
-        </AdministrationDropDown>
-        <AdministrationDropDown>
-          <td>
-            <label>
-              <FcPlus />
-              Lab Management
-            </label>
-          </td>                           
-        </AdministrationDropDown>
-        <AdministrationDropDown>
-          <td>
-            <label>
-              <FcPlus />
-              Pharmacy Management
-            </label>
-          </td>                           
-        </AdministrationDropDown>
-        <AdministrationDropDown>
-          <td>
-            <label>
-              <FcPlus />
-              Utility
-            </label>
-          </td>                           
-        </AdministrationDropDown>
-        <AdministrationDropDown>
-        <td>User Management</td>
-        <td>
-          <label><input type="checkbox" />Is Active</label>
-          <label><input type="checkbox" />View</label>
-          <label><input type="checkbox" />Add</label>
-          <label><input type="checkbox" />Edit</label>
-          <label><input type="checkbox" />Upload</label>
-          <label><input type="checkbox" />Delete</label>
-          <label><input type="checkbox" />U & R</label>
-          <label><input type="checkbox" />Approve</label>
-          <label><input type="checkbox" />Payment Mode</label>
-          <label><input type="checkbox" />Hospital TypeField</label>
-        </td>
-        <td>
-          <label><input type="checkbox" />All</label>
-        </td>                        
-        </AdministrationDropDown>  
-        <AdministrationDropDown>
-        <td>ICD Master</td>
-        <td>
-          <label><input type="checkbox" />Is Active</label>
-          <label><input type="checkbox" />View</label>
-          <label><input type="checkbox" />Add</label>
-          <label><input type="checkbox" />Edit</label>
-          <label><input type="checkbox" />Upload</label>
-          <label><input type="checkbox" />Delete</label>
-          <label><input type="checkbox" />U & R</label>
-          <label><input type="checkbox" />Approve</label>
-          <label><input type="checkbox" />Payment Mode</label>
-          <label><input type="checkbox" />Hospital TypeField</label>
-        </td>
-        <td>
-          <label><input type="checkbox" />All</label>
-        </td>                        
-        </AdministrationDropDown>               
+        {adminMenu.map((item, index) => 
+          item.type === "section" ? (
+            <AdministrationDropDown key={index}>
+              <td>
+                <label>
+                  <FcPlus /> {item.name}
+                </label>
+              </td>
+            </AdministrationDropDown>
+          ) : (
+            <AdministrationDropDown key = {index}>
+              <td>
+                {item.name}
+              </td>
+              <td>
+                {item.fields.map(field => 
+                  <label key={field}>
+                    <input type="checkbox" />
+                    {field}
+                  </label>
+                )}
+              </td>
+              <td>
+                <label>
+                  <input type="checkbox" /> All
+                </label>
+              </td>
+            </AdministrationDropDown>
+          )
+        )}
       </>      
-      )}
-      {openSection === "master" && (
-        <>
-          <MasterManagementDropDown>
-          <td>Category</td>
-          <td>
-            <label><input type="checkbox" />Is Active</label>
-            <label><input type="checkbox" />View</label>
-            <label><input type="checkbox" />Add</label>
-            <label><input type="checkbox" />Edit</label>
-            <label><input type="checkbox" />Upload</label>
-            <label><input type="checkbox" />Delete</label>
-            <label><input type="checkbox" />U & R</label>
-            <label><input type="checkbox" />Approve</label>
-          </td>
-          <td>
-            <label><input type="checkbox" />All</label>
-          </td>                        
-          </MasterManagementDropDown> 
-          <MasterManagementDropDown>
-          <td>Discharge Summary Template</td>
-          <td>
-            <label><input type="checkbox" />Is Active</label>
-            <label><input type="checkbox" />View</label>
-            <label><input type="checkbox" />Add</label>
-            <label><input type="checkbox" />Edit</label>
-            <label><input type="checkbox" />Upload</label>
-            <label><input type="checkbox" />Delete</label>
-            <label><input type="checkbox" />U & R</label>
-            <label><input type="checkbox" />Approve</label>
-          </td>
-          <td>
-            <label><input type="checkbox" />All</label>
-          </td>                        
-          </MasterManagementDropDown> 
-          <MasterManagementDropDown>
-          <td>Reimb Master Certificates</td>
-          <td>
-            <label><input type="checkbox" />Is Active</label>
-            <label><input type="checkbox" />View</label>
-            <label><input type="checkbox" />Add</label>
-            <label><input type="checkbox" />Edit</label>
-            <label><input type="checkbox" />Upload</label>
-            <label><input type="checkbox" />Delete</label>
-            <label><input type="checkbox" />U & R</label>
-            <label><input type="checkbox" />Approve</label>
-          </td>
-          <td>
-            <label><input type="checkbox" />All</label>
-          </td>                        
-          </MasterManagementDropDown> 
-          <MasterManagementDropDown>
-          <td>Status</td>
-          <td>
-            <label><input type="checkbox" />Is Active</label>
-            <label><input type="checkbox" />View</label>
-            <label><input type="checkbox" />Add</label>
-            <label><input type="checkbox" />Edit</label>
-            <label><input type="checkbox" />Upload</label>
-            <label><input type="checkbox" />Delete</label>
-            <label><input type="checkbox" />U & R</label>
-            <label><input type="checkbox" />Approve</label>
-          </td>
-          <td>
-            <label><input type="checkbox" />All</label>
-          </td>                        
-          </MasterManagementDropDown> 
-          <MasterManagementDropDown>
-          <td>Company</td>
-          <td>
-            <label><input type="checkbox" />Is Active</label>
-            <label><input type="checkbox" />View</label>
-            <label><input type="checkbox" />Add</label>
-            <label><input type="checkbox" />Edit</label>
-            <label><input type="checkbox" />Upload</label>
-            <label><input type="checkbox" />Delete</label>
-            <label><input type="checkbox" />U & R</label>
-            <label><input type="checkbox" />Approve</label>
-          </td>
-          <td>
-            <label><input type="checkbox" />All</label>
-          </td>                        
-          </MasterManagementDropDown> 
-          <MasterManagementDropDown>
-          <td>Department</td>
-          <td>
-            <label><input type="checkbox" />Is Active</label>
-            <label><input type="checkbox" />View</label>
-            <label><input type="checkbox" />Add</label>
-            <label><input type="checkbox" />Edit</label>
-            <label><input type="checkbox" />Upload</label>
-            <label><input type="checkbox" />Delete</label>
-            <label><input type="checkbox" />U & R</label>
-            <label><input type="checkbox" />Approve</label>
-          </td>
-          <td>
-            <label><input type="checkbox" />All</label>
-          </td>                        
-          </MasterManagementDropDown> 
-          <MasterManagementDropDown>
-          <td>Hospital</td>
-          <td>
-            <label><input type="checkbox" />Is Active</label>
-            <label><input type="checkbox" />View</label>
-            <label><input type="checkbox" />Add</label>
-            <label><input type="checkbox" />Edit</label>
-            <label><input type="checkbox" />Upload</label>
-            <label><input type="checkbox" />Delete</label>
-            <label><input type="checkbox" />U & R</label>
-            <label><input type="checkbox" />Approve</label>
-          </td>
-          <td>
-            <label><input type="checkbox" />All</label>
-          </td>                        
-          </MasterManagementDropDown> 
-          <MasterManagementDropDown>
-          <td>Employee</td>
-          <td>
-            <label><input type="checkbox" />Is Active</label>
-            <label><input type="checkbox" />View</label>
-            <label><input type="checkbox" />Add</label>
-            <label><input type="checkbox" />Edit</label>
-            <label><input type="checkbox" />Upload</label>
-            <label><input type="checkbox" />Delete</label>
-            <label><input type="checkbox" />U & R</label>
-            <label><input type="checkbox" />Approve</label>
-          </td>
-          <td>
-            <label><input type="checkbox" />All</label>
-          </td>                        
-          </MasterManagementDropDown> 
-          <MasterManagementDropDown>
-          <td>OP Type</td>
-          <td>
-            <label><input type="checkbox" />Is Active</label>
-            <label><input type="checkbox" />View</label>
-            <label><input type="checkbox" />Add</label>
-            <label><input type="checkbox" />Edit</label>
-            <label><input type="checkbox" />Upload</label>
-            <label><input type="checkbox" />Delete</label>
-            <label><input type="checkbox" />U & R</label>
-            <label><input type="checkbox" />Approve</label>
-          </td>
-          <td>
-            <label><input type="checkbox" />All</label>
-          </td>                        
-          </MasterManagementDropDown> 
-          <MasterManagementDropDown>
-          <td>Payment Mode</td>
-          <td>
-            <label><input type="checkbox" />Is Active</label>
-            <label><input type="checkbox" />View</label>
-            <label><input type="checkbox" />Add</label>
-            <label><input type="checkbox" />Edit</label>
-            <label><input type="checkbox" />Upload</label>
-            <label><input type="checkbox" />Delete</label>
-            <label><input type="checkbox" />U & R</label>
-            <label><input type="checkbox" />Approve</label>
-          </td>
-          <td>
-            <label><input type="checkbox" />All</label>
-          </td>                        
-          </MasterManagementDropDown>
-          <MasterManagementDropDown>
-          <td>Relationship</td>
-          <td>
-            <label><input type="checkbox" />Is Active</label>
-            <label><input type="checkbox" />View</label>
-            <label><input type="checkbox" />Add</label>
-            <label><input type="checkbox" />Edit</label>
-            <label><input type="checkbox" />Upload</label>
-            <label><input type="checkbox" />Delete</label>
-            <label><input type="checkbox" />U & R</label>
-            <label><input type="checkbox" />Approve</label>
-          </td>
-          <td>
-            <label><input type="checkbox" />All</label>
-          </td>                        
-          </MasterManagementDropDown>
-          <MasterManagementDropDown>
-          <td>Unit</td>
-          <td>
-            <label><input type="checkbox" />Is Active</label>
-            <label><input type="checkbox" />View</label>
-            <label><input type="checkbox" />Add</label>
-            <label><input type="checkbox" />Edit</label>
-            <label><input type="checkbox" />Upload</label>
-            <label><input type="checkbox" />Delete</label>
-            <label><input type="checkbox" />U & R</label>
-            <label><input type="checkbox" />Approve</label>
-          </td>
-          <td>
-            <label><input type="checkbox" />All</label>
-          </td>                        
-          </MasterManagementDropDown>
-          <MasterManagementDropDown>
-          <td>Hospital Department</td>
-          <td>
-            <label><input type="checkbox" />Is Active</label>
-            <label><input type="checkbox" />View</label>
-            <label><input type="checkbox" />Add</label>
-            <label><input type="checkbox" />Edit</label>
-            <label><input type="checkbox" />Upload</label>
-            <label><input type="checkbox" />Delete</label>
-            <label><input type="checkbox" />U & R</label>
-            <label><input type="checkbox" />Approve</label>
-          </td>
-          <td>
-            <label><input type="checkbox" />All</label>
-          </td>                        
-          </MasterManagementDropDown>
-          <MasterManagementDropDown>
-          <td>Package Info</td>
-          <td>
-            <label><input type="checkbox" />Is Active</label>
-            <label><input type="checkbox" />View</label>
-            <label><input type="checkbox" />Add</label>
-            <label><input type="checkbox" />Edit</label>
-            <label><input type="checkbox" />Upload</label>
-            <label><input type="checkbox" />Delete</label>
-            <label><input type="checkbox" />U & R</label>
-            <label><input type="checkbox" />Approve</label>
-          </td>
-          <td>
-            <label><input type="checkbox" />All</label>
-          </td>                        
-          </MasterManagementDropDown>
-          <MasterManagementDropDown>
-          <td>Package Details</td>
-          <td>
-            <label><input type="checkbox" />Is Active</label>
-            <label><input type="checkbox" />View</label>
-            <label><input type="checkbox" />Add</label>
-            <label><input type="checkbox" />Edit</label>
-            <label><input type="checkbox" />Upload</label>
-            <label><input type="checkbox" />Delete</label>
-            <label><input type="checkbox" />U & R</label>
-            <label><input type="checkbox" />Approve</label>
-          </td>
-          <td>
-            <label><input type="checkbox" />All</label>
-          </td>                        
-          </MasterManagementDropDown>
-          <MasterManagementDropDown>
-          <td>SMS Service</td>
-          <td>
-            <label><input type="checkbox" />Is Active</label>
-            <label><input type="checkbox" />View</label>
-            <label><input type="checkbox" />Add</label>
-            <label><input type="checkbox" />Edit</label>
-            <label><input type="checkbox" />Upload</label>
-            <label><input type="checkbox" />Delete</label>
-            <label><input type="checkbox" />U & R</label>
-            <label><input type="checkbox" />Approve</label>
-          </td>
-          <td>
-            <label><input type="checkbox" />All</label>
-          </td>                        
-          </MasterManagementDropDown>
-
-        </>        
       )}
     </>
   )
@@ -382,4 +95,3 @@ export default Administration;
 
 const AdministrationRow = styled.tr``;
 const AdministrationDropDown = styled.tr``;
-const MasterManagementDropDown = styled.tr``;
